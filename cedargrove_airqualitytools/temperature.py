@@ -29,7 +29,7 @@ __repo__ = "https://github.com/CedarGroveStudios/CircuitPython_AirQualityTools.g
 def celsius_to_fahrenheit(deg_c):
     """Convert degrees Celsius to degrees Fahrenheit.
 
-    :param float deg_c: The ambient temperature in Celsius. No default.
+    :param float deg_c: The temperature in Celsius. No default.
     """
     return ((9 / 5) * deg_c) + 32
 
@@ -37,7 +37,7 @@ def celsius_to_fahrenheit(deg_c):
 def fahrenheit_to_celsius(deg_f):
     """Convert degrees Fahrenheit to degrees Celsius.
 
-    :param float deg_f: The ambient temperature in Fahrenheit. No default.
+    :param float deg_f: The temperature in Fahrenheit. No default.
     """
     return (deg_f - 32) * (5 / 9)
 
@@ -45,7 +45,7 @@ def fahrenheit_to_celsius(deg_f):
 def celsius_to_kelvin(deg_c):
     """Convert degrees Celsius to Kelvin.
 
-    :param float deg_c: The ambient temperature in Celsius. No default.
+    :param float deg_c: The temperature in Celsius. No default.
     """
     return deg_c + 273.15
 
@@ -54,6 +54,6 @@ def celsius_to_kelvin(deg_c):
 def kelvin_to_celsius(kelvins):
     """Convert Kelvin to degrees Celsius.
 
-    :param float kelvins: The ambient temperature in Kelvin. No default.
+    :param float kelvins: The temperature in Kelvins. No default.
     """
     return kelvins - 273.15

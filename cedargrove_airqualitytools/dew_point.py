@@ -54,6 +54,8 @@ def dew_point(deg_c, humidity, verbose=False):
     :param float deg_c: The ambient temperature in Celsius. No default.
     :param float humidity: The ambient humidity in the range of 0 to 100
     percent. No default.
+    :param bool verbose: The observation detail switch. False for summary; True
+    for a detailed description. Defaults to False.
     """
 
     dew_point_c = round(
@@ -69,7 +71,7 @@ def dew_point(deg_c, humidity, verbose=False):
     dew_point_c = min(max(dew_point_c, 0), 40)
 
     # Select message from list
-    for minimum, maximum, summary, detail in enumerate(BREAKPOINTS):
+    for _, (_, maximum, summary, detail) in enumerate(BREAKPOINTS):
         if dew_point_c < maximum:
             if verbose:
                 return dew_point_c, summary + detail

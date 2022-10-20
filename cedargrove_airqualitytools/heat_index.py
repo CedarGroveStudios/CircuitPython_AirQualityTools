@@ -65,13 +65,15 @@ def heat_index(deg_c, humidity, verbose=False):
     :param float deg_c: The ambient temperature in Celsius. No default.
     :param float humidity: The ambient humidity in the range of 0 to 100
     percent. No default.
+    :param bool verbose: The observation detail switch. False for summary; True
+    for a detailed description. Defaults to False.
     """
 
-    t = ((9 / 5) * deg_c) + 32  # Dry-bulb temperature in degrees Fahrenheit
-    r = humidity  # Percentage value between 0 and 100
+    temp_f = ((9 / 5) * deg_c) + 32  # Dry-bulb temperature in degrees Fahrenheit
+    r_humid = humidity  # Percentage value between 0 and 100
 
     # Fahrenheit coefficients
-    c = (
+    coefficients = (
         0,
         -42.379,
         2.04901523,
@@ -87,25 +89,25 @@ def heat_index(deg_c, humidity, verbose=False):
     # Formula (Fahrenheit method, +/-1.3F: Rothfusz NWS-SR90-23, 1990)
     # https://www.weather.gov/media/ffc/ta_htindx.PDF
     h_index_f = round(
-        c[1]
-        + (c[2] * t)
-        + (c[3] * r)
-        + (c[4] * t * r)
-        + (c[5] * t**2)
-        + (c[6] * r**2)
-        + (c[7] * t**2 * r)
-        + (c[8] * t * r**2)
-        + (c[9] * t**2 * r**2),
+        coefficients[1]
+        + (coefficients[2] * temp_f)
+        + (coefficients[3] * r_humid)
+        + (coefficients[4] * temp_f * r_humid)
+        + (coefficients[5] * temp_f**2)
+        + (coefficients[6] * r_humid**2)
+        + (coefficients[7] * temp_f**2 * r_humid)
+        + (coefficients[8] * temp_f * r_humid**2)
+        + (coefficients[9] * temp_f**2 * r_humid**2),
         1,
     )
     # Convert heat index value to degrees Celsius
     h_index_c = round((h_index_f - 32) * (5 / 9), 1)
 
     # Select message from list
-    for minimum, maximum, summary, detail_1, detail_2 in enumerate(BREAKPOINTS):
+    for _, (_, maximum, summary, detail_1, detail_2) in enumerate(BREAKPOINTS):
         if h_index_c < maximum:
             if verbose:
                 return h_index_c, summary + detail_1 + detail_2
-            return h_index, summary
+            return h_index_c, summary
 
     return h_index_c, "Invalid heat index value."

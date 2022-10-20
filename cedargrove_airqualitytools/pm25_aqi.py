@@ -83,31 +83,32 @@ def map_range(x, in_min, in_max, out_min, out_max):
     return min(max(mapped, out_max), out_min)
 
 
-def concentration_to_aqi(pm25_value):
+def pm25_ppm_to_quality(pm25_ppm):
     """Calculate EPA Air Quality Index (AQI) as derived from PM2.5 particulate
     concentration. Returns a data valid flag, calculated air quality index
-    (AQI), color, and US English warning category (description).
+    (AQI), the RGB warning color integer value, and the corresponding US English
+    description or warning.
 
     NOTE: The calculated AQI returned by this function should ideally be
     measured using the 24-hour PM2.5 concentration average. Calculating a AQI
     without averaging will result in higher AQI values than expected.
 
-    :param float pm25_value: Particulate matter 2.5 sensor value. Range 0
+    :param float pm25_ppm: Particulate matter 2.5 sensor value. Range 0
     to 500ppm. No default.
     """
 
-    if pm25_value < 0:
+    if pm25_ppm < 0:
         return False, -1, BLUE, "INVALID"
 
-    if pm25_value > 500:
+    if pm25_ppm > 500:
         return False, -1, MAROON, "OVERRANGE"
 
     # Check sensor reading using EPA breakpoints
-    for pm25_min, pm25_max, aqi_min, aqi_max, aqi_color, aqi_desc in enumerate(
+    for _, (pm25_min, pm25_max, aqi_min, aqi_max, aqi_color, aqi_desc) in enumerate(
         BREAKPOINTS
     ):
-        if pm25_value > pm25_min:
-            aqi_value = int(map_range(pm25_value, pm25_min, pm25_max, aqi_min, aqi_max))
+        if pm25_ppm > pm25_min:
+            aqi_value = int(map_range(pm25_ppm, pm25_min, pm25_max, aqi_min, aqi_max))
 
             return True, aqi_value, aqi_color, aqi_desc
 

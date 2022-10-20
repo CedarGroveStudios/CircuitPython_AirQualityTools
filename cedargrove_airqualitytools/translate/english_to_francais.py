@@ -35,7 +35,7 @@ ENG_FRANCAIS = {
 def interpret(enable=True, english_phrase=""):
     """Translate an English phrase.
 
-    :param bool enable: Enable the translater. Defaults to True.
+    :param bool enable: Enable the translator. Defaults to True.
     :param str english_phrase: English phrase to be interpreted. Defaults to blank.
     """
 
