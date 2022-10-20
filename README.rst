@@ -73,7 +73,8 @@ Usage Example
 
 .. code-block:: python
 
-    from cedargrove_airqualitytools.pm25_aqi import concentration_to_aqi
+    from cedargrove_airqualitytools.pm25_aqi import pm25_ppm_to_quality
+    from cedargrove_airqualitytools.co2_iaq import co2_ppm_to_quality
     from cedargrove_airqualitytools.translate.english_to_francais import interpret
 
     TRANSLATE = True  # Enable language translator
@@ -84,7 +85,7 @@ Usage Example
 
     # Calculate the quality and description
     _, aqi_value, _, aqi_desc = pm25_ppm_to_quality(PM25_CONCENTRATION)
-    _, iaq_value, -, iaq_desc = co2_ppm_to_quality(CO2_CONCENTRATION)
+    _, iaq_value, _, iaq_desc = co2_ppm_to_quality(CO2_CONCENTRATION)
 
     # Print the AQI, description, and translation
     print(f"PM2.5 AQI = {aqi_value} : {aqi_desc}")
