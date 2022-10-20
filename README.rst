@@ -18,23 +18,17 @@ Introduction
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-A collection of CircuitPython helpers used for the calculation of various air quality parameters including the conversion between temperature units.
+A collection of CircuitPython helpers used for the calculation of air quality levels.
 
-CO2...
+CO2_IAQ calculates the Indoor Air Quality Index (IAQ) as derived from a CO2 ppm
+concentration measurement. Returns a data valid flag, CO2 input concentration
+value, the RGB warning color integer value, and the corresponding US English
+description or warning.
 
-DewPoint...
-
-HeatIndex...
-
-PM25_AQI calculates EPA Air Quality Index (AQI) from a PM2.5 particulate
-concentration. The function accepts a P2.5 measured concentration value and
-returns a data valid flag, calculated air quality index (AQI), indicator color
-RGB value, and category description.
-
-Temperature Unit Converters...
-
-Air Quality Observation Translators
-
+PM25_AQI calculates EPA Air Quality Index (AQI) as derived from PM2.5
+particulate concentration. Returns a data valid flag, calculated air quality
+index, the RGB warning color integer value, and the corresponding US English
+description or warning.
 
 .. image:: https://github.com/CedarGroveStudios/CircuitPython_AirQualityTools/blob/main/media/WARNING.jpg
 
@@ -80,20 +74,25 @@ Usage Example
 .. code-block:: python
 
     from cedargrove_airqualitytools.pm25_aqi import concentration_to_aqi
-    from cedargrove_airqualitytools.co2... import co2...
     from cedargrove_airqualitytools.translate.english_to_francais import interpret
 
-    pm25_measurement = 10  # PM2.5 concentration of 10ppm; GOOD quality
+    TRANSLATE = True  # Enable language translator
 
-    data_valid, aqi_value, aqi_color, aqi_desc = concentration_to_aqi(pm25_measurement)
+    # Read some sensor values
+    PM25_CONCENTRATION = 10  # PM2.5 concentration of 10ppm; GOOD AQI
+    CO2_CONCENTRATION = 1450  # CO2 concentration of 1450ppm; HAZARDOUS IAQ
 
-    print(aqi_value, aqi_desc)  # Print the AQI and description
-    print(interpret(True, aqi_desc))  # Provide the description in Français (French)
+    # Calculate the quality and description
+    _, aqi_value, _, aqi_desc = pm25_ppm_to_quality(PM25_CONCENTRATION)
+    _, iaq_value, -, iaq_desc = co2_ppm_to_quality(CO2_CONCENTRATION)
 
-.. code-block:: python
+    # Print the AQI, description, and translation
+    print(f"PM2.5 AQI = {aqi_value} : {aqi_desc}")
+    print(interpret(TRANSLATE, aqi_desc))
 
-    from cedargrove_airqualitytools.dewpoint import dewpoint...
-    from cedargrove_airqualitytools.heatindex import heatindex...
+    # Print the IAQ, description, and translation
+    print(f"CO2 IAQ = {iaq_value} : {iaq_desc}")
+    print(interpret(TRANSLATE, iaq_desc))
 
 
 
