@@ -18,18 +18,23 @@ Introduction
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-A collection of CircuitPython air quality calculators for AQI, IAQ, Dew Point, and Heat Index.
-
-PM25_AQI calculates EPA Air Quality Index (AQI) from a PM2.5 particulate
-concentration. The function accepts a P2.5 measured concentration value and
-returns a data valid flag, calculated air quality index (AQI), indicator color
-RGB value, and category description.
+A collection of CircuitPython helpers used for the calculation of various air quality parameters including the conversion between temperature units.
 
 CO2...
 
 DewPoint...
 
 HeatIndex...
+
+PM25_AQI calculates EPA Air Quality Index (AQI) from a PM2.5 particulate
+concentration. The function accepts a P2.5 measured concentration value and
+returns a data valid flag, calculated air quality index (AQI), indicator color
+RGB value, and category description.
+
+Temperature Unit Converters...
+
+Air Quality Observation Translators
+
 
 .. image:: https://github.com/CedarGroveStudios/CircuitPython_AirQualityTools/blob/main/media/WARNING.jpg
 
