@@ -80,7 +80,7 @@ Usage Example
 
     # Read some sensor values
     PM25_CONCENTRATION = 10  # PM2.5 concentration of 10ppm; GOOD AQI
-    CO2_CONCENTRATION = 1450  # CO2 concentration of 1450ppm; HAZARDOUS IAQ
+    CO2_CONCENTRATION = 1450  # CO2 concentration of 1450ppm; POOR IAQ
 
     # Calculate the quality and description
     _, aqi_value, _, aqi_desc = pm25_ppm_to_quality(PM25_CONCENTRATION)
