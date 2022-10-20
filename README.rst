@@ -18,7 +18,7 @@ Introduction
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-A collection of CircuitPython helpers used for the calculation of air quality levels.
+A collection of CircuitPython helpers used for the calculation of PM2.5 and CO2 air quality levels.
 
 ``CO2_IAQ`` calculates the Indoor Air Quality Index (IAQ) as derived from a CO2 ppm
 concentration measurement. Returns a data valid flag, CO2 input concentration
