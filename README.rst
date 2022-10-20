@@ -20,12 +20,12 @@ Introduction
 
 A collection of CircuitPython helpers used for the calculation of air quality levels.
 
-CO2_IAQ calculates the Indoor Air Quality Index (IAQ) as derived from a CO2 ppm
+``CO2_IAQ`` calculates the Indoor Air Quality Index (IAQ) as derived from a CO2 ppm
 concentration measurement. Returns a data valid flag, CO2 input concentration
 value, the RGB warning color integer value, and the corresponding US English
 description or warning.
 
-PM25_AQI calculates EPA Air Quality Index (AQI) as derived from PM2.5
+``PM25_AQI`` calculates EPA Air Quality Index (AQI) as derived from PM2.5
 particulate concentration. Returns a data valid flag, calculated air quality
 index, the RGB warning color integer value, and the corresponding US English
 description or warning.
