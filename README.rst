@@ -31,7 +31,7 @@ index, the RGB warning color integer value, and the corresponding US English
 description or warning.
 
 ``Translate`` is a collection of description translators. English, Deutsch
-(German), Français (French), and Pirate are currently supported.
+(German), Español (Spanish), Français (French), and Pirate are currently supported.
 
 .. image:: https://github.com/CedarGroveStudios/CircuitPython_AirQualityTools/blob/main/media/WARNING.jpg
 
