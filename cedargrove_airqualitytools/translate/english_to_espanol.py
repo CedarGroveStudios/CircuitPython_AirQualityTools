@@ -7,21 +7,21 @@ Thank you to @jposada202020 for the translation!
 """
 
 
-ENG_SPANISH = {
+ENG_ESPANOL = {
     "Air Quality": "Calidad del aire",
     "ALARM": "ALARMA",
     "Alarm": "Alarma",
-    "CALIBRATE": "CALIBRACION",
+    "CALIBRATE": "CALIBRACIÓN",
     "DANGER": "PELIGRO",
     "ENGLISH": "ESPAÑOL",
     "GOOD": "BUENO",
     "HAZARDOUS": "PELIGROSO",
     "Indoor Air Quality": "Calidad del aire al interior",
-    "INVALID": "INVALIDO",
+    "INVALID": "INVÁLIDO",
     "LANGUAGE": "LENGUA",
     "LOW BATTERY": "BATERIA BAJA",
     "MODERATE": "MODERADO",
-    "OVERRANGE": "MAXIMO",
+    "OVERRANGE": "MÁXIMO",
     "POOR": "POBRE",
     "SENSITIVE": "SENSIBLE",
     "TEMPERATURE": "TEMPERATURA",
@@ -40,6 +40,6 @@ def interpret(enable=True, english_phrase=""):
     """
 
     if enable:
-        if english_phrase in ENG_SPANISH:
-            return ENG_SPANISH[english_phrase]
+        if english_phrase in ENG_ESPANOL:
+            return ENG_ESPANOL[english_phrase]
     return english_phrase
